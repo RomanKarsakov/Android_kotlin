@@ -1,9 +1,10 @@
-package com.example.karsakov_andr.ui
+package com.example.karsakov_andr.ui.viewmodel
 
-import android.content.ContentValues.TAG
+import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.karsakov_andr.data.RetrofitClient
 import kotlinx.coroutines.launch
 
 class ProductViewModel: ViewModel() {
@@ -14,10 +15,10 @@ class ProductViewModel: ViewModel() {
                 val products = productResponse.products
                 for (product in products)
                 {
-                    Log.d(TAG, "${product}")
+                    Log.d(ContentValues.TAG, "${product}")
                 }
             } catch (e: Exception){
-                Log.e(TAG, " ${e.message}", e)
+                Log.e(ContentValues.TAG, " ${e.message}", e)
             }
         }
     }

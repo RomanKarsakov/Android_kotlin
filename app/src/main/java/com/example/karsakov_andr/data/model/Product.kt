@@ -1,4 +1,4 @@
-package com.example.karsakov_andr.data
+package com.example.karsakov_andr.data.model
 
 data class Product(
     val id: Int,

@@ -1,6 +1,6 @@
-package com.example.karsakov_andr.ui
+package com.example.karsakov_andr.data
 
-import com.example.karsakov_andr.ui.interfaces.ProductInterface
+import com.example.karsakov_andr.data.interfaces.ProductInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

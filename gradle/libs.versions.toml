@@ -12,6 +12,10 @@ retrofit = "3.0.0"
 gson = "3.0.0"
 okhttp = "5.5.0"
 viewmodel = "2.8.7"
+<<<<<<< HEAD
+=======
+cronet = "500.0.2"
+>>>>>>> 59d9868 (pr02 and pr01)
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +37,10 @@ gson = {group = "com.squareup.retrofit2", name = "converter-gson", version.ref =
 okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp"}
 logginginterceptor = {group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp"}
 viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "viewmodel" }
+<<<<<<< HEAD
+=======
+cronet = { group = "org.chromium.net", name = "cronet", version.ref = "cronet" }
+>>>>>>> 59d9868 (pr02 and pr01)
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

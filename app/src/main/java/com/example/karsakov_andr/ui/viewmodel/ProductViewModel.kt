@@ -11,7 +11,11 @@ class ProductViewModel: ViewModel() {
     fun fetch(){
         viewModelScope.launch {
             try {
+<<<<<<< HEAD
                 val productResponse = RetrofitClient.retrofitAPI.getproducts()
+=======
+                val productResponse = RetrofitClient.retrofitAPI.getProducts()
+>>>>>>> 59d9868 (pr02 and pr01)
                 val products = productResponse.products
                 for (product in products)
                 {

@@ -13,37 +13,19 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.karsakov_andr.data.model.Recipe
 import com.example.karsakov_andr.ui.viewmodel.ProductViewModel
 import com.example.karsakov_andr.ui.theme.Karsakov_andrTheme
+import com.example.karsakov_andr.ui.viewmodel.PostViewModel
 import com.example.karsakov_andr.ui.viewmodel.RecipeViewModel
+import com.example.karsakov_andr.ui.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val productViewModel: ProductViewModel = viewModel()
-            val recipeViewModel: RecipeViewModel = viewModel()
-            LaunchedEffect(Unit) {
-                productViewModel.fetch()
-            }
-
-            val request = Recipe(
-                name = "Куриное филе в сливочно-чесночном соусе",
-                ingredients = listOf(
-                    "Куриное филе", "сливки", "чеснок", "сливочное масло",
-                    "растительное масло", "твердый сыр", "соль",
-                    "черный перец", "итальянские травы"
-                ),
-                instructions = listOf(
-                    "Нарезать филе", "Обжарить с чесноком",
-                    "Добавить сливки и специи", "Тушить до готовности"
-                ),
-                prepTimeMinutes = 25,
-                difficulty = "Easy"
-            )
-            LaunchedEffect(Unit) {
-                recipeViewModel.addRecipe(request)
-            }
-
+            val userViewModel: UserViewModel = viewModel()
+            val postViewModel: PostViewModel = viewModel()
+            userViewModel.updateUsers()
+            postViewModel.deletepost()
             }
         }
     }
@@ -56,7 +38,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 fun GreetingPreview() {
     Karsakov_andrTheme {

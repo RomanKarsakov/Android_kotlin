@@ -7,10 +7,10 @@ import com.example.karsakov_andr.data.RetrofitClient
 import kotlinx.coroutines.launch
 
 class PostViewModel: ViewModel() {
-    fun deletepost() {
+    fun deletepost(id: Int) {
         viewModelScope.launch {
             try {
-                val post = RetrofitClient.postApi.deleteById(30)
+                val post = RetrofitClient.postApi.deleteById(id)
                 Log.d("PostViewModel","id ${post.id} удален - ${post.isDeleted}")
             } catch (e: Exception) {
                 Log.e("RetrofitError", e.message.toString())

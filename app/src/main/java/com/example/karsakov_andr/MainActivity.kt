@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
             val userViewModel: UserViewModel = viewModel()
             val postViewModel: PostViewModel = viewModel()
             userViewModel.updateUsers()
-            postViewModel.deletepost()
+            postViewModel.deletepost(30)
             }
         }
     }

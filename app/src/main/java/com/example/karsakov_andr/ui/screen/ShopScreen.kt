@@ -10,28 +10,22 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.karsakov_andr.ui.components.CategoryItem // Убедитесь, что этот компонент тоже создан
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.karsakov_andr.ui.components.CategoryItem
 import com.example.karsakov_andr.ui.components.ProductCard
-import com.example.karsakov_andr.data.model.Product
+import com.example.karsakov_andr.ui.viewmodel.ProductViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FurnitureShopScreen() {
-    val categories = listOf("Popular", "Chair", "Table", "Armchair", "Bed")
+fun ShopScreen(
+    viewModel: ProductViewModel = viewModel()
+) {
+    val categories = listOf("Popular", "beauty", "Fragrances", "furniture", "Groceries")
     var selectedCategory by remember { mutableStateOf("Popular") }
 
-    // Список ваших товаров с полем title
-    val products = remember {
-        listOf(
-            Product(1, "Black Simple Lamp", 12.00),
-            Product(2, "Minimal Stand", 25.00),
-            Product(3, "Coffee Chair", 20.00),
-            Product(4, "Simple Desk", 50.00)
-        )
-    }
+    val products by viewModel.productsState
 
     Scaffold(
         topBar = {
@@ -53,7 +47,6 @@ fun FurnitureShopScreen() {
                 .padding(paddingValues)
                 .padding(horizontal = 16.dp)
         ) {
-            // Верхняя панель категорий
             LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = Modifier.padding(vertical = 16.dp)
@@ -67,7 +60,6 @@ fun FurnitureShopScreen() {
                 }
             }
 
-            // Две колонки товаров
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -80,11 +72,4 @@ fun FurnitureShopScreen() {
             }
         }
     }
-}
-
-// Превью для всего экрана, чтобы увидеть финальный результат прямо в студии
-@Preview(showBackground = true)
-@Composable
-fun FurnitureShopScreenPreview() {
-    FurnitureShopScreen()
 }

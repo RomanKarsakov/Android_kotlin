@@ -28,22 +28,21 @@ fun ProductCard(
     Column(modifier = modifier.fillMaxWidth()) {
         Box(
             modifier = Modifier
+                .width(157.dp)
+                .height(200.dp)
                 .fillMaxWidth()
-                .aspectRatio(1f)
                 .clip(RoundedCornerShape(16.dp))
                 .background(Color(0xFFF9F9F9))
         ) {
-            // Используем одну стандартную системную картинку для всех товаров
             Image(
-                painter = painterResource(id = android.R.drawable.ic_menu_report_image),
+                painter = painterResource(id = com.example.karsakov_andr.R.drawable.image_no),
                 contentDescription = product.title,
-                contentScale = ContentScale.Fit, // Подгоняем по размеру
+                contentScale = ContentScale.Fit,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(24.dp) // Небольшой отступ, чтобы иконка смотрелась аккуратно
+
             )
 
-            // Кнопка сумки/корзины
             Box(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
@@ -54,7 +53,7 @@ fun ProductCard(
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    painter = painterResource(id = android.R.drawable.ic_input_add), // Системная иконка плюсика
+                    painter = painterResource(id = com.example.karsakov_andr.R.drawable.shopping_bag_icon),
                     contentDescription = "Добавить в корзину",
                     tint = Color.White,
                     modifier = Modifier.size(16.dp)
@@ -74,7 +73,7 @@ fun ProductCard(
         Spacer(modifier = Modifier.height(2.dp))
 
         Text(
-            text = "$ ${String.format("%.2f", product.price)}",
+            text = "$ ${product.price}",
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black
@@ -85,14 +84,13 @@ fun ProductCard(
 @Preview(showBackground = true)
 @Composable
 fun ProductCardPreview() {
-    // Создаем фейковый объект продукта для отображения в дизайнере
+
     val fakeProduct = Product(
         id = 1,
         title = "Black Simple Lamp",
         price = 12.00
     )
 
-    // Оборачиваем в Box с фиксированной шириной, чтобы карточка не растягивалась на весь экран превью
     Box(modifier = Modifier.width(180.dp).padding(16.dp)) {
         ProductCard(product = fakeProduct)
     }

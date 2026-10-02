@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.karsakov_andr.data.model.Recipe
+import com.example.karsakov_andr.ui.screen.ShopScreen
 import com.example.karsakov_andr.ui.viewmodel.ProductViewModel
 import com.example.karsakov_andr.ui.theme.Karsakov_andrTheme
 import com.example.karsakov_andr.ui.viewmodel.PostViewModel
@@ -22,10 +23,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val userViewModel: UserViewModel = viewModel()
-            val postViewModel: PostViewModel = viewModel()
-            userViewModel.updateUsers()
-            postViewModel.deletepost(30)
+            ShopScreen()
             }
         }
     }

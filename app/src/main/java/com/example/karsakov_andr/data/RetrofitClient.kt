@@ -1,5 +1,6 @@
 package com.example.karsakov_andr.data
 
+import com.example.karsakov_andr.data.interfaces.AuthInterface
 import com.example.karsakov_andr.data.interfaces.PostInterface
 import com.example.karsakov_andr.data.interfaces.ProductInterface
 import com.example.karsakov_andr.data.interfaces.RecipeInterface
@@ -28,8 +29,15 @@ object RetrofitClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+    val swager = Retrofit.Builder()
+        .baseUrl("http://10.207.106.59:8080/api/collections/")
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
     val retrofitAPI: ProductInterface = retrofit.create(ProductInterface::class.java)
     val recipeAPI: RecipeInterface = retrofit.create(RecipeInterface::class.java)
     val userApi: UserInterface = retrofit.create(UserInterface::class.java)
     val postApi: PostInterface = retrofit.create(PostInterface::class.java)
+    val authApi: AuthInterface = swager.create(AuthInterface::class.java)
     }

@@ -4,6 +4,7 @@ import com.example.karsakov_andr.data.interfaces.AuthInterface
 import com.example.karsakov_andr.data.interfaces.PostInterface
 import com.example.karsakov_andr.data.interfaces.ProductInterface
 import com.example.karsakov_andr.data.interfaces.RecipeInterface
+import com.example.karsakov_andr.data.interfaces.TodoInterface
 import com.example.karsakov_andr.data.interfaces.UserInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -40,4 +41,5 @@ object RetrofitClient {
     val userApi: UserInterface = retrofit.create(UserInterface::class.java)
     val postApi: PostInterface = retrofit.create(PostInterface::class.java)
     val authApi: AuthInterface = swager.create(AuthInterface::class.java)
+    val todoApi: TodoInterface = swager.create(TodoInterface::class.java)
     }

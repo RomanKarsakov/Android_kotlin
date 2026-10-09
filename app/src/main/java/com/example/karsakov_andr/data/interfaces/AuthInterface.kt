@@ -9,8 +9,7 @@ import retrofit2.http.POST
 
 interface AuthInterface {
     @POST("users/auth-with-password")
-    suspend fun authPasswrd(@Body userAuth: UserAuth): AuthResponse
+    suspend fun authPass(@Body userAuth: UserAuth): AuthResponse
 
-    @GET("todos/records")
-    suspend fun getTodos(@Header("Authorization") token: String): AuthResponse
+
 }

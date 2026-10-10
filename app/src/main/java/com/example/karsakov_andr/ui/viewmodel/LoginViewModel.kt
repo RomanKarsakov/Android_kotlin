@@ -7,7 +7,7 @@ import com.example.karsakov_andr.data.RetrofitClient
 import com.example.karsakov_andr.data.model.UserAuth
 import kotlinx.coroutines.launch
 
-class TodosViewModel : ViewModel() {
+class LoginViewModel : ViewModel() {
     fun login (userAuth: UserAuth) {
         viewModelScope.launch {
             try {

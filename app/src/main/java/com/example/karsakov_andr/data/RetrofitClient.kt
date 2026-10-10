@@ -31,7 +31,7 @@ object RetrofitClient {
         .build()
 
     val swager = Retrofit.Builder()
-        .baseUrl("http://10.207.106.59:8080/api/collections/")
+        .baseUrl("http://10.207.106.59:8090/api/collections/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

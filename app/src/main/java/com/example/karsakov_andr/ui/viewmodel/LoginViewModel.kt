@@ -4,25 +4,29 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.karsakov_andr.data.RetrofitClient
+import com.example.karsakov_andr.data.TokenManager
 import com.example.karsakov_andr.data.model.UserAuth
 import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel(private val tokenManager: TokenManager,
+                     private val todoViewModel: TodoViewModel) : ViewModel() {
     fun login (userAuth: UserAuth) {
         viewModelScope.launch {
             try {
                 val authUser = RetrofitClient.authApi.authPass(userAuth)
                 Log.d("LoginViewModel", "User: ${authUser.token} ${authUser.record}")
-
-                val records = RetrofitClient.todoApi.getTodos("${authUser.token}")
-
-                Log.d("LoginViewModel", "items:${records.items}\n" +
-                        " page:${records.page}\n " +
-                        "perPage:${records.perPage}\n totalItems:${records.totalItems}\n " +
-                        "totalPages:${records.totalPages}")
+                authUser.token?.let{
+                    writeToken(it)
+                    todoViewModel.todofetch()
+                }
             } catch (e: Exception) {
                 Log.e("RetrofitError", e.message.toString())
             }
+        }
+    }
+    fun writeToken(token: String) {
+        viewModelScope.launch {
+            tokenManager.saveToken(token)
         }
     }
 }

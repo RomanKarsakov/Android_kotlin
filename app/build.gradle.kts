@@ -44,10 +44,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-<<<<<<< HEAD
-=======
-    implementation(libs.cronet)
->>>>>>> 59d9868 (pr02 and pr01)
     implementation(libs.retrofit)
     implementation(libs.gson)
     implementation(libs.okhttp)

@@ -21,7 +21,7 @@ class ProductViewModel: ViewModel() {
     fun fetch(){
         viewModelScope.launch {
             try {
-                val productResponse = RetrofitClient.retrofitAPI.getproducts()
+                val productResponse = RetrofitClient.retrofitAPI.getProducts()
 
                 val products = productResponse.products
                 _productsState.value = products

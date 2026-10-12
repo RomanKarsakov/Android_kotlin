@@ -11,11 +11,8 @@ class RecipeViewModel : ViewModel(){
     fun addRecipe(recipe: Recipe) {
         viewModelScope.launch {
             try {
-<<<<<<< HEAD
-                val response = RetrofitClient.retrofitAPI.createRecipe(recipe)
-=======
+
                 val response = RetrofitClient.recipeAPI.createRecipe(recipe)
->>>>>>> 59d9868 (pr02 and pr01)
 
                 Log.d(
                     "RecipeLog",

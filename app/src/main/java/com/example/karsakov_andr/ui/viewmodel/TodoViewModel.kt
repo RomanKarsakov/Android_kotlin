@@ -13,7 +13,7 @@ class TodoViewModel(private val tokenManager: TokenManager): ViewModel() {
         viewModelScope.launch {
                 val token =  tokenManager.tokenFlow().first()
                 try {
-                    val records = RetrofitClient.todoApi.getTodos("${token}")
+                    val records = RetrofitClient.todoApi.getTodos("Bearer $token")
                     val items = records.items
 
                     for(item in items)

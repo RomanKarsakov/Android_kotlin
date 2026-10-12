@@ -4,12 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.karsakov_andr.data.TokenManager
 import com.example.karsakov_andr.data.model.Recipe
 import com.example.karsakov_andr.data.model.UserAuth
 import com.example.karsakov_andr.ui.screen.ShopScreen
@@ -18,6 +22,7 @@ import com.example.karsakov_andr.ui.theme.Karsakov_andrTheme
 import com.example.karsakov_andr.ui.viewmodel.LoginViewModel
 import com.example.karsakov_andr.ui.viewmodel.PostViewModel
 import com.example.karsakov_andr.ui.viewmodel.RecipeViewModel
+import com.example.karsakov_andr.ui.viewmodel.TodoViewModel
 import com.example.karsakov_andr.ui.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
@@ -25,12 +30,30 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val loginViewModel: LoginViewModel = viewModel()
+            val tokenManager = TokenManager(applicationContext)
+
+            val todoViewModel: TodoViewModel by viewModels {
+                viewModelFactory {
+                    initializer {
+                        TodoViewModel(tokenManager)
+                    }
+                }
+            }
+
+            val loginViewModel: LoginViewModel by viewModels {
+                viewModelFactory {
+                    initializer {
+                        LoginViewModel(tokenManager,todoViewModel )
+                    }
+                }
+            }
+
             val loginUser = UserAuth(
                 identity = "roman@example.com",
                 password = "Vfcz1133"
             )
             loginViewModel.login(loginUser)
+
             }
         }
     }

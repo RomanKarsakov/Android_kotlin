@@ -13,6 +13,8 @@ gson = "3.0.0"
 okhttp = "5.5.0"
 viewmodel = "2.8.7"
 dpreferences = "1.2.1"
+secu = "1.1.0"
+uiText = "1.12.1"
 
 
 [libraries]
@@ -37,6 +39,8 @@ logginginterceptor = {group = "com.squareup.okhttp3", name = "logging-intercepto
 viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "viewmodel" }
 datastore = {module = "androidx.datastore:datastore-preferences", version.ref = "dpreferences"}
 kotlinx = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "dpreferences"}
+security = {module = "androidx.security:security-crypto", version.ref = "secu"}
+androidx-compose-ui-text = { group = "androidx.compose.ui", name = "ui-text", version.ref = "uiText" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
